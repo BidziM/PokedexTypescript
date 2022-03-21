@@ -10,7 +10,6 @@ import Type, {TypeRouteParams} from '../screens/Types/Types'
 
 const Stack = createSharedElementStackNavigator();
 const Routes = () => {
-
   const { state } = useContext(AuthContext)
   const Roots = state.isLogin == false ? (
     <>
@@ -31,7 +30,7 @@ const Routes = () => {
         }}
         sharedElements={(route: Route<string, object | undefined>) => {
           const { pokemon } = route.params as RouteParams;
-            const sharedArray = [
+            const sharedElementsArray = [
               {
                 id: `${pokemon.id}.image`,
               },
@@ -40,12 +39,12 @@ const Routes = () => {
               },
             ]
             pokemon.types.forEach(item => {
-              return sharedArray.push({
+              return sharedElementsArray.push({
                 id: `${pokemon.id}.type.${item.type.url}`,
               });
             });
 
-            return sharedArray;
+            return sharedElementsArray;
         }}
       />
       <Stack.Screen
@@ -53,12 +52,12 @@ const Routes = () => {
         component={Type}
         sharedElements={(route: Route<string, object | undefined>) => {
           const { TypeName } = route.params as TypeRouteParams;
-            const sharedArray = [
+            const sharedElementsArray = [
               {
                 id: `${TypeName}.type`,
               },
             ]
-            return sharedArray;
+            return sharedElementsArray;
         }}
       />
     </>

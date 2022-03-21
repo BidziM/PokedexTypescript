@@ -34,9 +34,6 @@ const Pokeball = ({
   };
 
   useEffect(() => {
-    if (withRotate) {
-
-    }
     Animated.timing(pokeballOpacity, {
         toValue: 1,
         duration: 350,
